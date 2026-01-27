@@ -1,0 +1,42 @@
+.item-card {
+  background: #f3f3f3;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.item-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.item-info {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.counter button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #333;
+  color: white;
+  border: none;
+}
+
+.add-btn {
+  padding: 6px 12px;
+  background: #333;
+  color: white;
+  border-radius: 6px;
+  border: none;
+}

@@ -1,0 +1,228 @@
+.checkout {
+  padding: 16px;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.item-info {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+}
+
+.qty-controls button {
+  background: #ddd;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: red;
+}
+
+.add-note {
+  font-size: 12px;
+  color: #888;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.dine-options {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0;
+}
+
+.dine-options button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background: #f0f0f0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dine-options .active {
+  background: black;
+  color: white;
+  
+}
+
+.cost-summary {
+  background: #fefae0;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.cost-summary p,
+.cost-summary h4 {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.your-details {
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.your-details form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.form-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.your-details input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 90%;
+
+}
+
+.swipe-order-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 50px;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  color: #333;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.swipe-order-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  transform: skewX(-20deg);
+}
+
+.swipe-order-btn:hover::before {
+  animation: swipeShine 1.2s forwards;
+}
+
+@keyframes swipeShine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+.swipe-order-btn:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+@media screen and (max-width: 600px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .item-info {
+    padding: 10px 0;
+  }
+
+  .qty-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dine-options {
+    flex-direction: column;
+  }
+
+  .dine-options button {
+    margin-bottom: 10px;
+  }
+  .dine-options button:last-child {
+    margin-bottom: 0;
+  }
+  .cost-summary {
+    margin-top: 16px;
+  }
+  .swipe-order-btn {
+    margin-top: 16px;
+  }
+  .your-details {
+    margin-top: 16px;
+  }
+  .add-note {
+    margin-top: 8px;
+  }
+  .remove-btn {
+    font-size: 18px;
+  }
+  .qty-controls button {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+  .checkout {
+    padding: 12px;
+  }
+  .cost-summary p,
+  .cost-summary h4 {
+    font-size: 14px;
+  }
+    
+}

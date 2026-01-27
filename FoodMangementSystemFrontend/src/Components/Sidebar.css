@@ -1,0 +1,140 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px;
+  background-color: white; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5rem;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  overflow-y: auto;
+}
+
+.sidebar-logo {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  background-color: #374151; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.sidebar-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #9ca3af; 
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  font-size: 1.5rem;
+  color: black;
+}
+
+.sidebar-icons a:hover {
+  background-color: #D9D9D9; 
+  color: black;
+
+}
+
+.sidebar-icons a.active {
+  background-color: #D9D9D9;
+  color: black;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 60px; 
+    padding-top: 1rem;
+  }
+  
+  .sidebar-logo {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .sidebar-icons a {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .sidebar-icons a.active {
+    box-shadow: none; 
+  }
+  
+  .sidebar::-webkit-scrollbar {
+    width: 0; 
+  }
+  .sidebar::-webkit-scrollbar-thumb {
+    display: none; 
+  }
+  .sidebar::-webkit-scrollbar-track {
+    display: none; 
+  }
+  .sidebar::-webkit-scrollbar-corner {
+    display: none; 
+  }
+  .sidebar::-webkit-scrollbar-button {
+    display: none; 
+  }
+  .sidebar::-webkit-scrollbar-track-piece {
+    display: none; 
+  }
+  .sidebar::-webkit-scrollbar-thumb:horizontal {
+    display: none; 
+  }
+  .sidebar::-webkit-scrollbar-thumb:vertical {
+    display: none; 
+  }
+  .sidebar::-webkit-scrollbar-track:horizontal {
+    display: none; 
+  }   
+  .sidebar::-webkit-scrollbar-track:vertical {
+    display: none; 
+  }
+  .sidebar::-webkit-scrollbar-button:horizontal {
+    display: none; 
+  }
+  .sidebar::-webkit-scrollbar-button:vertical {
+    display: none; 
+  }
+  .sidebar::-webkit-scrollbar-corner:horizontal {
+    display: none; 
+  }
+  .sidebar::-webkit-scrollbar-corner:vertical {
+    display: none; 
+  }
+  
+}
