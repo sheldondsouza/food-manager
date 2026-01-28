@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const cron = require('node-cron');
 const { calculateAnalytics } = require('./Services/AnalyticsServices');
 const FoodItem = require('./Models/FoodItems'); const Chef = require('./Models/Chefs');
+const Table = require('./Models/Tables');
 dotenv.config();
 app.use(cors(
     {
@@ -31,14 +32,20 @@ const analyticsRoutes = require('./Routes/AnalyticsRoutes');
 const tableRoutes = require('./Routes/TableRoutes');
 const OrderRoutes = require('./Routes/OrderRoutes');
 const customerRoutes = require('./Routes/CustomerRoutes');
+const chatBotRoutes = require('./Routes/ChatBotRoutes');
 app.use('/admin/analytics', analyticsRoutes);
 app.use('/admin/tables', tableRoutes);
 app.use('/admin/orders', OrderRoutes);
-app.use('/custommers', customerRoutes)
+app.use('/custommers', customerRoutes);
+app.use('/chatbot', chatBotRoutes);
 
 
 mongoose.connect(process.env.MONGO_DB_URI).then(async () => {
     console.log("Connected with mongoDB Sucessfully");
+
+    // Reset all tables to Available status on startup
+    await Table.updateMany({}, { tableStatus: 'Available' });
+    console.log("✅ Reset all tables to Available status");
 
     // Seed initial food items if collection is empty
     const count = await FoodItem.countDocuments();
@@ -115,6 +122,22 @@ mongoose.connect(process.env.MONGO_DB_URI).then(async () => {
 
         await Chef.insertMany(mockChefs);
         console.log("✅ Seeded initial chefs");
+    }
+
+    // Seed initial tables if collection is empty
+    const tableCount = await Table.countDocuments();
+    if (tableCount === 0) {
+        const mockTables = [
+            { tableSpecificId: 1, tableName: 'Table 01', tableStatus: 'Available', tablechaircount: 2, tableNumber: 1 },
+            { tableSpecificId: 2, tableName: 'Table 02', tableStatus: 'Available', tablechaircount: 2, tableNumber: 2 },
+            { tableSpecificId: 3, tableName: 'Table 03', tableStatus: 'Available', tablechaircount: 4, tableNumber: 3 },
+            { tableSpecificId: 4, tableName: 'Table 04', tableStatus: 'Available', tablechaircount: 4, tableNumber: 4 },
+            { tableSpecificId: 5, tableName: 'Table 05', tableStatus: 'Available', tablechaircount: 6, tableNumber: 5 },
+            { tableSpecificId: 6, tableName: 'Table 06', tableStatus: 'Available', tablechaircount: 6, tableNumber: 6 }
+        ];
+
+        await Table.insertMany(mockTables);
+        console.log("✅ Seeded initial tables");
     }
 }).catch((err) => {
     console.log(err);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Sidebar from '../Components/Sidebar';
+import { Link } from 'react-router-dom';
 import '../Pages/DashBoard.css';
 import {
   PieChart, Pie, Cell, Tooltip,
@@ -287,6 +288,11 @@ const DashBoard = () => {
         </div>
 
       </div>
+
+      {/* Floating Chatbot Button */}
+      <Link to="/Support" className="chatbot-floating-btn" title="Chat with our assistant">
+        <span className="chatbot-icon">🤖</span>
+      </Link>
     </div>
   );
 };

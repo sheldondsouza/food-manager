@@ -100,7 +100,7 @@
   width: 100%;
   max-width: 100px;
   align-self: last baseline;
-  
+
 }
 
 .table-grid-header {
@@ -132,9 +132,11 @@
 .available {
   background-color: white;
 }
-.revenue-graph{
+
+.revenue-graph {
   background-color: white;
 }
+
 .table-grid {
   margin-top: 10px;
   display: flex;
@@ -142,7 +144,8 @@
   gap: 10px;
   justify-content: center;
 }
-.revenue-container{
+
+.revenue-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -150,6 +153,7 @@
   width: 100%;
   background-color: white;
 }
+
 .table-box {
   width: 100px;
   height: 80px;
@@ -173,16 +177,17 @@
   border-color: #ccc;
 }
 
-.order-summary-header{
+.order-summary-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   gap: 10%;
   border-bottom: 1px solid #f3f4f6;
- 
+
   width: 100%;
 }
+
 .chef-orders {
   background: white;
   border-radius: 1rem;
@@ -225,13 +230,15 @@
   background-color: #cbd5e1;
   border-radius: 10px;
 }
-.order-summary-card-container{
+
+.order-summary-card-container {
   display: flex;
   flex-direction: row;
   gap: 3.1rem;
   width: 100%;
 }
-.order-summary-card{
+
+.order-summary-card {
   background: white;
   border-radius: 1rem;
   border: 1px solid #D9D9D9;
@@ -240,8 +247,9 @@
   align-items: center;
   justify-content: center;
   padding-left: 5%;
-  
+
 }
+
 @media screen and (max-width: 768px) {
   .dashboard-content {
     padding: 1rem;
@@ -272,174 +280,267 @@
     width: 100%;
     max-width: 400px;
   }
+
   .table-grid {
     flex-direction: column;
     align-items: center;
   }
+
   .table-box {
     width: 80px;
     height: 60px;
     font-size: 14px;
   }
+
   .order-summary-card-container {
     flex-direction: column;
     align-items: center;
   }
+
   .order-summary-card {
     width: 100%;
     max-width: 400px;
     margin-bottom: 1rem;
   }
+
   .chef-orders {
     width: 100%;
   }
+
   .chef-table {
     width: 100%;
     font-size: 14px;
   }
+
   .order-summary-header {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .order-summary-header h2 {
     margin-bottom: 0.5rem;
   }
+
   .summary-dropdown {
     width: 100%;
     max-width: none;
   }
+
   .revenue-container {
     flex-direction: column;
     align-items: center;
   }
+
   .revenue-graph {
     width: 100%;
     height: 300px;
-  } 
+  }
+
   .revenue-graph canvas {
     width: 100% !important;
     height: 300px !important;
   }
+
   .table-grid-header {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .table-legend {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .legend-box {
     margin-bottom: 4px;
   }
+
   .chef-orders h2 {
     font-size: 1.5rem;
   }
+
   .chef-table th,
   .chef-table td {
     font-size: 14px;
   }
+
   .chef-table th {
     padding: 0.5rem;
   }
+
   .chef-table td {
     padding: 0.5rem;
   }
+
   .chef-table {
     width: 100%;
     overflow-x: auto;
   }
+
   .chef-table th,
   .chef-table td {
     white-space: nowrap;
   }
+
   .chef-table th {
     text-align: center;
   }
+
   .chef-table td {
     text-align: center;
   }
+
   .chef-table th:first-child,
   .chef-table td:first-child {
     text-align: left;
   }
+
   .chef-table th:last-child,
   .chef-table td:last-child {
     text-align: right;
   }
+
   .order-summary-card {
     width: 100%;
     max-width: 400px;
     padding: 1rem;
   }
+
   .order-summary-card h3 {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
   }
+
   .order-summary-card p {
     font-size: 1rem;
     margin: 0.25rem 0;
   }
+
   .order-summary-card-container {
     flex-direction: column;
     align-items: center;
     width: 100%;
   }
+
   .order-summary-card-container .order-summary-card {
     width: 100%;
     max-width: 400px;
     margin-bottom: 1rem;
   }
+
   .order-summary-header {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .order-summary-header h2 {
     margin-bottom: 0.5rem;
   }
+
   .order-summary-header .summary-dropdown {
     width: 100%;
     max-width: none;
   }
+
   .revenue-graph {
     width: 100%;
     height: 300px;
   }
+
   .revenue-graph canvas {
     width: 100% !important;
     height: 300px !important;
   }
+
   .table-grid-header {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .table-legend {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .legend-box {
     margin-bottom: 4px;
   }
+
   .chef-orders {
     width: 100%;
     padding: 1rem;
-  } 
+  }
+
   .chef-table {
     width: 100%;
     font-size: 14px;
   }
+
   .chef-table th,
   .chef-table td {
     font-size: 14px;
   }
+
   .chef-table th {
     padding: 0.5rem;
   }
+
   .chef-table td {
     padding: 0.5rem;
   }
+
   .chef-table {
     width: 100%;
     overflow-x: auto;
   }
-  
+
+}
+
+/* Floating Chatbot Button */
+.chatbot-floating-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  z-index: 999;
+  cursor: pointer;
+  border: none;
+}
+
+.chatbot-floating-btn:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.chatbot-floating-btn:active {
+  transform: scale(0.95);
+}
+
+.chatbot-icon {
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .chatbot-floating-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .chatbot-icon {
+    font-size: 24px;
+  }
 }

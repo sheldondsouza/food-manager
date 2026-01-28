@@ -24,8 +24,8 @@ exports.bookAnOrder = async (orderData) => {
       });
       orderData.orderedCustomerId = newCustomer._id;
 
-      // Only assign table for Dine-In orders
-      if (orderData.orderType === "Dine-In") {
+      // Only assign table for Dine-In orders if not already assigned
+      if (orderData.orderType === "Dine-In" && !orderData.orderedTableId) {
         const assignTable = await TableServices.autoAssignTableToCustomer(newCustomer._id);
         if (assignTable) {
           orderData.orderedTableId = assignTable._id;
@@ -64,8 +64,8 @@ exports.bookAnOrder = async (orderData) => {
         } else {
           console.log("Different items ordered, not a repeat");
 
-          // Only assign table for Dine-In orders
-          if (orderData.orderType === "Dine-In") {
+          // Only assign table for Dine-In orders if not already assigned
+          if (orderData.orderType === "Dine-In" && !orderData.orderedTableId) {
             const assignTable = await TableServices.autoAssignTableToCustomer(exisitingCustomer._id);
             if (assignTable) {
               orderData.orderedTableId = assignTable._id;

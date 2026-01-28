@@ -1,55 +1,55 @@
-const Table=require('../Models/Tables');
-const Customer=require('../Models/Customer');
+const Table = require('../Models/Tables');
+const Customer = require('../Models/Customer');
 
-exports.addATable=async(tabledata)=>{
-    try{
-        const existingTable=await Table.findOne({tableName:tabledata.name, tableNumber:tabledata.tableNumber});
-        if(existingTable){
-            throw new Error('Table already exists');    
+exports.addATable = async (tabledata) => {
+    try {
+        const existingTable = await Table.findOne({ tableName: tabledata.name, tableNumber: tabledata.tableNumber });
+        if (existingTable) {
+            throw new Error('Table already exists');
         }
-        if(!tabledata.name || !tabledata.tableNumber || !tabledata.chairsCount){
+        if (!tabledata.name || !tabledata.tableNumber || !tabledata.chairsCount) {
             throw new Error('Please provide all required fields');
         }
-        const table= new Table({
-            
-            tableSpecificId:tabledata.id,
-            tableName:tabledata.name||`Table ${tabledata.tableNumber}`,
-            tableStatus:tabledata.tableStatus,
-            tableNumber:tabledata.tableNumber,
-            tablechaircount:tabledata.chairsCount
+        const table = new Table({
+
+            tableSpecificId: tabledata.id,
+            tableName: tabledata.name || `Table ${tabledata.tableNumber}`,
+            tableStatus: tabledata.tableStatus,
+            tableNumber: tabledata.tableNumber,
+            tablechaircount: tabledata.chairsCount
         })
-        const result=await table.save();
+        const result = await table.save();
         return result;
     }
-    catch(err){
+    catch (err) {
         console.log(err);
         throw new Error('Error while adding table');
     }
 }
-exports.getAllTables=async()=>{
-    try{
-        const tables=await Table.find();
+exports.getAllTables = async () => {
+    try {
+        const tables = await Table.find();
         return tables;
     }
-    catch(err){
+    catch (err) {
         console.log(err);
         throw new Error('Error while fetching tables');
     }
 }
 exports.searchAndFilterTables = async (query) => {
-  const { q, status } = query;
+    const { q, status } = query;
 
-  let filter = {};
+    let filter = {};
 
-  if (q) {
-    filter.name = { $regex: q, $options: "i" };
-  }
+    if (q) {
+        filter.name = { $regex: q, $options: "i" };
+    }
 
-  if (status && ["Available", "Reserved"].includes(status)) {
-    filter.status = status;
-  }
+    if (status && ["Available", "Reserved"].includes(status)) {
+        filter.status = status;
+    }
 
-  return await Table.find(filter).sort({ name: 1 });
+    return await Table.find(filter).sort({ name: 1 });
 };
 
 exports.updateTableStatus = async (tableId, status) => {
@@ -69,34 +69,34 @@ exports.updateTableStatus = async (tableId, status) => {
 }
 
 exports.updateTableNumbers = async (tables) => {
-  try {
-    const tablesArray = Object.values(tables);
+    try {
+        const tablesArray = Object.values(tables);
 
-    for (const table of tablesArray) {
-      const { _id, tableNumber, tableName } = table;
+        for (const table of tablesArray) {
+            const { _id, tableNumber, tableName } = table;
 
-      if (typeof tableNumber !== 'number' || tableNumber <= 0) {
-        throw new Error(`Invalid table number for table ID ${_id}`);
-      }
+            if (typeof tableNumber !== 'number' || tableNumber <= 0) {
+                throw new Error(`Invalid table number for table ID ${_id}`);
+            }
 
-      if (!tableName || typeof tableName !== 'string') {
-        throw new Error(`Invalid or missing table name for table ID ${_id}`);
-      }
+            if (!tableName || typeof tableName !== 'string') {
+                throw new Error(`Invalid or missing table name for table ID ${_id}`);
+            }
 
-      console.log(`Updating table ID ${_id} with tableNumber ${tableNumber} and tableName ${tableName}`);
+            console.log(`Updating table ID ${_id} with tableNumber ${tableNumber} and tableName ${tableName}`);
 
-      await Table.findByIdAndUpdate(
-        _id,
-        { tableNumber, tableName },
-        { new: true }
-      );
+            await Table.findByIdAndUpdate(
+                _id,
+                { tableNumber, tableName },
+                { new: true }
+            );
+        }
+
+        return tablesArray;
+    } catch (err) {
+        console.error("Error in updateTableNumbers:", err);
+        throw new Error("Error while updating table numbers and names");
     }
-
-    return tablesArray;
-  } catch (err) {
-    console.error("Error in updateTableNumbers:", err);
-    throw new Error("Error while updating table numbers and names");
-  }
 };
 
 
@@ -151,6 +151,7 @@ exports.autoAssignTableToCustomer = async (customerId) => {
         table.tableStatus = 'Reserved';
         table.tableBookedCustomerId = customerId;
 
+        await customer.save();
         await table.save();
         return table;
     } catch (err) {
