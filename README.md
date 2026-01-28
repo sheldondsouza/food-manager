@@ -8,6 +8,7 @@ A simple app to help manage food items, inventory, and expiry tracking.
 - Search and filter by category, name, or expiry status
 - Notifications or reminders for items near expiry (if configured)
 - Import/export CSV for bulk updates
+- chatbot for easy ordering queries about orders or reservation
 
 ## Quick Start
 
